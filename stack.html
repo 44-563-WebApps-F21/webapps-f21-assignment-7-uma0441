@@ -49,6 +49,7 @@
         <button id = "push" onclick = "makeNewDiv()" class = "btn btn-primary">Push value</button>
         <button id = "pop" onclick = "popItem()" class = "btn btn-danger">Pop</button>
         <button id = "zap" onclick = "zap()" class = "btn btn-warning">Zap values</button>
+        <button id = "unique" onclick = "unique()" class = "btn btn-primary">Unique</button> 
     </div>
 </body>
 <script>
@@ -87,5 +88,19 @@
             }
         }
     }
+    function unique() {
+		var items = document.getElementsByClassName("stack")
+		for (var i = 0; i < items.length; i++) 
+        {
+			for (var j = i + 1; j < items.length; j++) 
+            {
+				if (items[i].innerHTML == items[j].innerHTML) 
+                {
+					items[i].remove()
+					j--; i--
+				}
+			}
+		}
+	}
 </script>
 </html>

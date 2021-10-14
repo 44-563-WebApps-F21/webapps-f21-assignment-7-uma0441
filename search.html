@@ -27,6 +27,7 @@
                 </div>
                 <div class="col-md-4" id="distance" style="text-align: center; background-color:rgb(184, 171, 175); color: rgb(11, 11, 12);">Distance is unknown
                 </div>
+                <div class="btn btn-info mb-6" onclick="startnewgame()">Reset</div>
             </div>
         </div><br>
         <div class="container">
@@ -127,6 +128,17 @@
                 var cln = Math.abs(source_y - destination_y);
                 return row + cln - 1;
             }
+            function startnewgame() 
+            {
+            triesCount = 0
+            animalLocation = Math.floor(Math.random() * 23 + 0)
+            document.getElementById("tries").innerHTML = "Number of tries is 0."
+            for (var i = 0; i < 24; i++) {
+                if (ids[i] == ids[animalLocation])
+                    document.getElementById(ids[i]).src = "bunny.jpg"
+
+            }
+        }
         </script>
     </body>
     </html>
