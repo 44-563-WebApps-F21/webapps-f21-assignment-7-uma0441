@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stack Page</title>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .flex-container 
+        {
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        }
+        .flex-container>div 
+        {
+            /*div children of the flex container*/
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            color: black;
+        }
+        /* Responsive layout */
+        @media (max-width: 600px) 
+        {
+            .flex-container 
+            {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manikanta Vasana builds a stack</h1>
+        <input type = "text" class = "form-control" style = "text-align: center;" id = "textBox" name = "inputElement"
+        placeholder = "Enter a Text"><br>
+        <div class="flex-container" id="target">
+            <div class = "stack">row item 1</div>
+            <div class = "stack">row item 2</div>
+            <div class = "stack">row item 3</div>
+        </div>
+        <p> Press the push button to create an new element of type div.</p>
+        <button id = "push" onclick = "makeNewDiv()" class = "btn btn-primary">Push value</button>
+        <button id = "pop" onclick = "popItem()" class = "btn btn-danger">Pop</button>
+        <button id = "zap" onclick = "zap()" class = "btn btn-warning">Zap values</button>
+    </div>
+</body>
+<script>
+    function makeNewDiv() 
+    {
+        /* make the div and its text */
+        let element = document.createElement("div")
+        text = document.getElementById("textBox").value
+        element.innerHTML = text;
+        element.className = "stack"
+        /* add it to the container */
+        document.getElementById('target').appendChild(element)
+    }
+    function popItem() 
+    {
+        stackItems = document.getElementsByClassName("stack")
+		length = stackItems.length
+		if (length > 0)
+		stackItems[length - 1].remove()
+    }
+    function zap() 
+    {
+        stackItems = document.getElementsByClassName("stack");
+        value = document.getElementById("textBox").value; 
+        if (stackItems != undefined && stackItems.length > 0) 
+        {
+            for (let i = 0; i < stackItems.length; i++) 
+            {
+                element = stackItems[i].innerHTML;
+                if (element == value) 
+                {
+                    console.log(stackItems[i])
+                    stackItems[i].remove();
+                    i--;
+                }
+            }
+        }
+    }
+</script>
+</html>
